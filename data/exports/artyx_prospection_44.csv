@@ -1,0 +1,31 @@
+nom,ville,departement,type_lieu,sous_type,jauge,site_web,programmation_humour,niveau_confiance,source_label,statut,notes
+Piano’cktail,Bouguenais,44,salle_spectacle,saison culturelle municipale,,https://www.pianocktail-bouguenais.fr,possible,a_verifier,Site officiel à confirmer,a_verifier,Salle culturelle proche Nantes.
+Théâtre de La Fleuriaye,Carquefou,44,theatre,théâtre municipal / centre culturel,800,https://www.theatre-carquefou.fr,possible,source_web,Wikipedia Festi’Dunan mentionne La Fleuriaye,à vérifier,Lieu municipal important.
+Salle Arlekino,Clisson,44,salle_spectacle,salle municipale / spectacle,,https://www.clisson.fr,possible,a_verifier,Site ville à confirmer,a_verifier,Déjà identifiée via événement Festi’Dunan / à vérifier.
+Théâtre Boris Vian,Couëron,44,salle_municipale,théâtre municipal,,https://www.ville-coueron.fr,possible,a_verifier,Site ville à vérifier,à vérifier,Programmation culturelle municipale.
+Espace Culturel Athanor,Guérande,44,salle_municipale,centre culturel,,https://www.ville-guerande.fr,possible,a_verifier,Site ville à vérifier,à vérifier,Saison culturelle municipale.
+Le Quatrain,Haute-Goulaine,44,salle_spectacle,espace culturel / saison,,https://www.lequatrain.fr,possible,a_verifier,Site officiel à confirmer,a_verifier,Salle culturelle intercommunale.
+Casino Barrière La Baule,La Baule-Escoublac,44,casino,casino / spectacle,,https://www.casinosbarriere.com,possible,a_verifier,Site officiel à confirmer,a_verifier,Casino pouvant programmer humour / événements.
+Capellia,La Chapelle-sur-Erdre,44,salle_municipale,salle culturelle municipale,,https://www.lachapellesurerdre.fr,possible,a_verifier,Site ville à vérifier,à vérifier,Saison culturelle locale.
+Espace Culturel Capellia,La Chapelle-sur-Erdre,44,salle_spectacle,salle municipale / saison culturelle,,https://www.lachapellesurerdre.fr,possible,a_verifier,Site ville à confirmer,a_verifier,Programmation culturelle à qualifier.
+Espace Paul Guimard,Le Cellier,44,salle_municipale,salle municipale / spectacle,,https://www.lecellier.fr,possible,a_verifier,Site ville à confirmer,a_verifier,Petite/moyenne commune à qualifier.
+Espace de Retz,Machecoul-Saint-Même,44,salle_spectacle,salle municipale / espace culturel,,https://www.machecoul-saint-meme.fr,possible,a_verifier,Site ville à confirmer,a_verifier,"Sud Loire, possible saison culturelle."
+La Compagnie du Café-Théâtre,Nantes,44,theatre,café-théâtre / humour,110 + 49,https://www.nantes-spectacles.com,oui,source_web,Wikipedia / site officiel mentionné,à contacter,Théâtre privé orienté scène comique.
+Le Grand T,Nantes,44,theatre,salle de spectacles / théâtre,,https://www.legrandt.fr,possible,source_web,Wikipedia / site officiel mentionné,à vérifier,Grande structure institutionnelle.
+Le Pannonica,Nantes,44,theatre,club jazz / salle spectacle,140,https://www.pannonica.com,non_verifie,source_web,Wikipedia,exclu_probable,"Plutôt jazz, pas cible prioritaire humour."
+Salle Paul-Fort / La Bouche d’Air,Nantes,44,theatre,chanson / salle spectacle,,https://www.labouchedair.com,non_verifie,source_web,Wikipedia Pannonica mentionne salle Paul-Fort / Bouche d’Air,à vérifier,À qualifier pour humour.
+Stereolux,Nantes,44,salle_spectacle,musiques actuelles / arts numériques,1200 + 400,https://www.stereolux.org,non_verifie,source_web,Wikipedia,exclu_probable,Plutôt musique / jeune public.
+Théâtre 100 Noms,Nantes,44,theatre,théâtre privé / humour,,https://theatre100noms.com,oui_probable,a_verifier,Site officiel à confirmer,à vérifier,Déduit des occurrences agenda 100 noms + Nantes.
+Théâtre Beaulieu,Nantes,44,theatre,théâtre privé / comédie,,https://www.theatrebeaulieu.fr,oui_probable,a_verifier,Site officiel à confirmer,a_verifier,Cible probable comédie / humour.
+Théâtre de Jeanne,Nantes,44,theatre,théâtre privé / humour,,https://theatre-jeanne.com,oui_probable,a_verifier,Site officiel à confirmer,à vérifier,Cible probable humour / seul-en-scène.
+Espace Culturel Cap Nort,Nort-sur-Erdre,44,salle_municipale,espace culturel,,https://www.nort-sur-erdre.fr,possible,a_verifier,Site ville à vérifier,à vérifier,Programmation commune / intercommunalité.
+Carré d’Argent,Pontchâteau,44,salle_municipale,centre culturel,,https://www.pontchateau.fr,possible,a_verifier,Site ville à vérifier,à vérifier,Programmation culturelle locale.
+Quai des Arts,Pornichet,44,salle_municipale,centre culturel,,https://www.quaidesarts-pornichet.fr,possible,a_verifier,Site officiel à vérifier,à vérifier,Cible littoral.
+Théâtre ONYX,Saint-Herblain,44,theatre,théâtre / scène conventionnée,,https://www.theatreonyx.fr,possible,source_web,Mentionné comme lieu culturel / programmation,à vérifier,Programmation pluridisciplinaire.
+Zénith Nantes Métropole,Saint-Herblain,44,salle_spectacle,zénith / grande salle,9000 max,https://www.zenith-nantesmetropole.com,possible,source_web,Wikipedia,à vérifier,"Très grande jauge, cible spéciale."
+Théâtre Municipal Simone Veil,Saint-Nazaire,44,theatre,scène nationale / théâtre,802,https://www.letheatre-saintnazaire.fr,possible,source_web,Référence publique,a_verifier,Structure institutionnelle majeure.
+Théâtre Simone Veil,Saint-Nazaire,44,theatre,scène nationale / théâtre,,https://www.letheatre-saintnazaire.fr,possible,source_web,Recherche web / référence publique,à vérifier,Structure institutionnelle majeure.
+L’Embarcadère,Saint-Sébastien-sur-Loire,44,salle_municipale,salle culturelle,,https://www.saintsebastien.fr,possible,a_verifier,Site ville à vérifier,à vérifier,Agglomération nantaise.
+Théâtre Ligéria,Sainte-Luce-sur-Loire,44,salle_municipale,saison culturelle municipale,,https://www.sainte-luce-loire.com,possible,a_verifier,Site ville à vérifier,à vérifier,Commune avec programmation culturelle.
+Espace culturel Le Champilambart,Vallet,44,salle_spectacle,salle municipale / saison culturelle,,https://www.vallet.fr,possible,a_verifier,Site ville à confirmer,a_verifier,À qualifier.
+Le Champilambart,Vallet,44,salle_municipale,salle culturelle,,https://www.vallet.fr,possible,a_verifier,Site ville à vérifier,à vérifier,Sud Loire / vignoble.

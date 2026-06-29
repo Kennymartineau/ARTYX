@@ -1,0 +1,14 @@
+COMMANDES A LANCER DANS LE DOSSIER ARTYX SUR WINDOWS
+
+1) Ouvrir le dossier dans VS Code
+2) Ouvrir le terminal dans VS Code
+3) Copier-coller :
+
+git init
+git add .
+git commit -m "Initial commit ARTYX"
+git branch -M main
+git remote add origin https://github.com/TON-UTILISATEUR/ARTYX.git
+git push -u origin main
+
+Remplace TON-UTILISATEUR par ton nom d'utilisateur GitHub.
