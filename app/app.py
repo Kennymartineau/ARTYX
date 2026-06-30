@@ -161,7 +161,7 @@ class Handler(BaseHTTPRequestHandler):
             rows=[dict(r) for r in con.execute('select dep_code,dep_nom,reg_nom,nb_communes,population_totale,statut_analyse,priorite from departements order by dep_code')]
             con.close(); return self._json(rows)
         if p.path=='/api/communes':
-            dep=qs.get('dep',['44'])[0]; q=qs.get('q',[''])[0]; sort=qs.get('sort',['population'])[0]
+            dep=qs.get('dep',['44'])[0]; q=qs.get('q',[''])[0]; sort=(qs.get('sort',['population'])[0] or 'population').lower()
             args=[dep]; where='dep_code=?'
             if q:
                 where+=' and nom_standard like ?'; args.append(f'%{q}%')
