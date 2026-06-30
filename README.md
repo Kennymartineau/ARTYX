@@ -1,16 +1,16 @@
-# ARTYX
+# APPLAUZ
 
-Application locale de travail pour construire la base de données ARTYX, avec un focus initial sur le département 44.
+Application locale de travail pour construire la base de données APPLAUZ, avec un focus initial sur le département 44.
 
 ## Lancer sur Windows
 
-1. Ouvrir le dossier `ARTYX`
-2. Double-cliquer sur `LANCER_ARTYX.bat`
+1. Ouvrir le dossier `ARTYX_github_initial`
+2. Double-cliquer sur `LANCER_APPLAUZ.bat`
 3. Ouvrir l'adresse affichée : `http://localhost:8787`
 
 ## Structure
 
-- `app/` : application locale ARTYX
+- `app/` : application locale APPLAUZ
 - `app/artyx.sqlite` : base SQLite principale
 - `data/raw/` : fichiers sources bruts
 - `data/exports/` : exports de travail

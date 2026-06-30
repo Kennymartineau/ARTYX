@@ -1,4 +1,4 @@
-# Sprint ARTYX 44
+# Sprint APPLAUZ 44
 
 ## Objectif
 Créer la meilleure base de données culturelle possible sur la Loire-Atlantique.

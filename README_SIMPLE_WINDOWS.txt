@@ -1,6 +1,6 @@
-ARTYX - version focus 44
+APPLAUZ - version focus 44
 
-1. Double-clique sur LANCER_ARTYX.bat
+1. Double-clique sur LANCER_APPLAUZ.bat
 2. Ouvre http://localhost:8787
 3. Nouvel onglet : Chantier 44
 

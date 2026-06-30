@@ -1,4 +1,4 @@
-COMMANDES A LANCER DANS LE DOSSIER ARTYX SUR WINDOWS
+COMMANDES A LANCER DANS LE DOSSIER APPLAUZ SUR WINDOWS
 
 1) Ouvrir le dossier dans VS Code
 2) Ouvrir le terminal dans VS Code
@@ -6,9 +6,9 @@ COMMANDES A LANCER DANS LE DOSSIER ARTYX SUR WINDOWS
 
 git init
 git add .
-git commit -m "Initial commit ARTYX"
+git commit -m "Initial commit APPLAUZ"
 git branch -M main
-git remote add origin https://github.com/TON-UTILISATEUR/ARTYX.git
+git remote add origin https://github.com/TON-UTILISATEUR/APPLAUZ.git
 git push -u origin main
 
 Remplace TON-UTILISATEUR par ton nom d'utilisateur GitHub.

@@ -104,16 +104,16 @@ def career_stats():
       'villes_count': len(cities), 'pays': sorted(countries), 'km_estime': km, 'trajets_connus': known, 'evenements_scene': len(rows)
     }
 
-INDEX_HTML='''<!doctype html><html lang="fr"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1"><title>ARTYX</title><meta name="theme-color" content="#8BCDBD"><link rel="manifest" href="/manifest.json"><link rel="stylesheet" href="/static/style.css"></head><body>
-<div class="bg"></div><aside><div class="brand">ARTYX</div><div class="mini">Copilote artiste</div><nav>
+INDEX_HTML='''<!doctype html><html lang="fr"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1"><title>APPLAUZ</title><meta name="theme-color" content="#8BCDBD"><link rel="manifest" href="/manifest.json"><link rel="stylesheet" href="/static/style.css"></head><body>
+<div class="bg"></div><aside><div class="brand">APPLAUZ</div><div class="mini">Copilote artiste</div><nav>
 <button class="nav active" data-tab="accueil">Accueil</button><button class="nav" data-tab="historique">Historique</button><button class="nav" data-tab="lieux">Salles & entités</button><button class="nav" data-tab="territoires">Territoires</button><button class="nav" data-tab="prospection">Base de prospection</button><button class="nav" data-tab="veille">Veille</button><button class="nav" data-tab="database">Base données</button><button class="nav" data-tab="chantier44">Chantier 44</button><button class="nav" data-tab="profil">Mon profil</button><button class="nav" data-tab="parametres">Paramètres</button>
-</nav></aside><main><header><div><h1>Bonjour Kenny 👋</h1><p>Une seule interface ARTYX : carrière, territoires, prospection et veille.</p></div><input id="globalSearch" placeholder="Rechercher une ville, une salle, un spectacle..."></header>
+</nav></aside><main><header><div><h1>Bonjour Kenny 👋</h1><p>Une seule interface APPLAUZ : carrière, territoires, prospection et veille.</p></div><input id="globalSearch" placeholder="Rechercher une ville, une salle, un spectacle..."></header>
 <section class="tab visible" id="accueil"><div class="grid cards" id="homeCards"></div><div class="panel"><h2>Spectacles joués</h2><div id="spectacleStats"></div></div></section>
 <section class="tab" id="historique"><div class="panel"><h2>Historique de scène</h2><input id="histSearch" placeholder="Filtrer : Princesse, Bacchus, Rennes..."><div id="histList" class="list"></div></div></section>
 <section class="tab" id="lieux"><div class="panel"><h2>Salles & entités</h2><div class="row"><input id="lieuxSearch" placeholder="Rechercher dans les lieux"><select id="lieuxType"><option value="">Tous types</option><option>theatre</option><option>salle_municipale</option><option>salle_spectacle</option><option>casino</option></select></div><div class="split"><div id="lieuxList" class="list"></div><div id="lieuDetail" class="detail">Sélectionne un lieu.</div></div></div></section>
 <section class="tab" id="territoires"><div class="panel"><h2>Territoires</h2><p class="muted">Base nationale issue du fichier communes : départements, communes, population et statut d'analyse.</p><div class="split"><div id="depList" class="list"></div><div><input id="communeSearch" placeholder="Chercher une commune"><div id="communeList" class="list"></div></div></div></div></section>
 <section class="tab" id="prospection"><div class="panel"><h2>Base de prospection</h2><p class="muted">Lieux culturels identifiés et à enrichir, département par département.</p><div class="row"><input id="prospectSearch" placeholder="Rechercher lieu / ville"><select id="prospectDep"><option value="44">44 Loire-Atlantique</option><option value="85">85 Vendée</option><option value="49">49 Maine-et-Loire</option></select></div><div id="prospectList" class="list"></div></div></section>
-<section class="tab" id="veille"><div class="panel"><h2>Veille</h2><div class="grid cards" id="veilleCards"></div><p class="muted">Objectif : programmer des réanalyses mensuelles par département. Pour l'instant, ARTYX structure les données à vérifier.</p></div></section>
+<section class="tab" id="veille"><div class="panel"><h2>Veille</h2><div class="grid cards" id="veilleCards"></div><p class="muted">Objectif : programmer des réanalyses mensuelles par département. Pour l'instant, APPLAUZ structure les données à vérifier.</p></div></section>
 
 <section class="tab" id="database"><div class="panel"><h2>Base de données en construction</h2><p class="muted">Suivi concret du nettoyage, des communes à analyser, des lieux à vérifier et des regroupements proposés.</p><div class="grid cards" id="dbCards"></div><div class="split"><div><h2>Communes 44 à analyser</h2><div id="queueCommunes" class="list"></div></div><div><h2>Regroupements proposés</h2><div id="aliasList" class="list"></div></div></div><div class="panel inner"><h2>Problèmes de qualité à corriger</h2><div id="qualityList" class="list"></div></div></div></section>
 
@@ -121,7 +121,7 @@ INDEX_HTML='''<!doctype html><html lang="fr"><head><meta charset="utf-8"><meta n
 <section class="tab" id="profil"><div class="panel"><h2>Mon profil artiste</h2><div id="profilBox"></div></div></section>
 <section class="tab" id="parametres"><div class="panel"><h2>Paramètres</h2><p>Palette actuelle : blanc majoritaire + vert d'eau.</p><p>Application locale unifiée. Les prochaines mises à jour s’ajouteront dans cette interface.</p></div></section>
 </main><script src="/static/app.js"></script></body></html>'''
-MANIFEST={'name':'ARTYX','short_name':'ARTYX','start_url':'/','display':'standalone','background_color':'#ffffff','theme_color':'#8BCDBD'}
+MANIFEST={'name':'APPLAUZ','short_name':'APPLAUZ','start_url':'/','display':'standalone','background_color':'#ffffff','theme_color':'#8BCDBD'}
 class Handler(BaseHTTPRequestHandler):
     def _send(self,status=200,body=b'',ctype='application/json'):
         self.send_response(status); self.send_header('Content-Type',ctype); self.send_header('Cache-Control','no-store'); self.end_headers()
@@ -161,11 +161,34 @@ class Handler(BaseHTTPRequestHandler):
             rows=[dict(r) for r in con.execute('select dep_code,dep_nom,reg_nom,nb_communes,population_totale,statut_analyse,priorite from departements order by dep_code')]
             con.close(); return self._json(rows)
         if p.path=='/api/communes':
-            dep=qs.get('dep',['44'])[0]; q=qs.get('q',[''])[0]
+            dep=qs.get('dep',['44'])[0]; q=qs.get('q',[''])[0]; sort=qs.get('sort',['population'])[0]
             args=[dep]; where='dep_code=?'
-            if q: where+=' and nom_standard like ?'; args.append(f'%{q}%')
-            rows=[dict(r) for r in con.execute('select code_insee,nom_standard,population,statut_analyse,priorite_analyse,derniere_analyse from communes_analyse where '+where+' order by population desc limit 300',args)]
+            if q:
+                where+=' and nom_standard like ?'; args.append(f'%{q}%')
+            order = 'nom_standard asc' if sort=='alpha' else 'population desc'
+            rows=[dict(r) for r in con.execute('select code_insee,dep_code,nom_standard,population,statut_analyse,priorite_analyse,derniere_analyse from communes_analyse where '+where+' order by '+order+' limit 300',args)]
             con.close(); return self._json(rows)
+        if p.path.startswith('/api/communes/') and not p.path.endswith('/note'):
+            code=p.path.split('/')[-1]
+            commune=con.execute('select * from communes_analyse where code_insee=?',(code,)).fetchone()
+            if not commune:
+                con.close(); return self._json({'error':'commune not found'},404)
+            nom=commune['nom_standard']
+            dep=commune['dep_code'] if 'dep_code' in commune.keys() else '44'
+            chantier=con.execute('select * from chantier_44_communes where code_insee=?',(code,)).fetchone()
+            lieux=[dict(r) for r in con.execute(
+                'select * from lieux_culturels where dep_code=? and lower(ville)=lower(?) order by nom_lieu',
+                (dep,nom)
+            )]
+            historique=[dict(r) for r in con.execute(
+                'select date,summary,location,city_guess from historique_scene_memory where lower(coalesce(city_guess,""))=lower(?) order by date desc limit 50',
+                (nom,)
+            )]
+            notes=[dict(r) for r in con.execute(
+                'select * from notes_communes where code_insee=? order by created_at desc',
+                (code,)
+            )]
+            con.close(); return self._json({'commune':dict(commune),'chantier':dict(chantier) if chantier else None,'lieux':lieux,'historique':historique,'notes':notes})
         if p.path=='/api/lieux':
             q=qs.get('q',[''])[0]; typ=qs.get('type',[''])[0]; dep=qs.get('dep',[''])[0]
             args=[]; where='1=1'
@@ -243,8 +266,12 @@ class Handler(BaseHTTPRequestHandler):
             id_lieu=p.path.split('/')[-2]; txt=(data.get('contenu') or '').strip()
             if txt: con.execute('insert into notes_lieux(id_lieu,contenu,type_note) values (?,?,?)',(id_lieu,txt,data.get('type_note','note'))); con.commit()
             con.close(); return self._json({'ok':True})
+        if p.path.startswith('/api/communes/') and p.path.endswith('/note'):
+            code=p.path.split('/')[-2]; txt=(data.get('contenu') or '').strip()
+            if txt: con.execute('insert into notes_communes(code_insee,contenu,type_note) values (?,?,?)',(code,txt,data.get('type_note','note'))); con.commit()
+            con.close(); return self._json({'ok':True})
         con.close(); return self._json({'error':'not found'},404)
 
 def run():
-    ensure_schema(); print('ARTYX unifié lancé : http://localhost:8787'); HTTPServer(('127.0.0.1',8787),Handler).serve_forever()
+    ensure_schema(); print('APPLAUZ unifié lancé : http://localhost:8787'); HTTPServer(('127.0.0.1',8787),Handler).serve_forever()
 if __name__=='__main__': run()
