@@ -63,10 +63,10 @@ $('#communeSearch').oninput=()=>loadCommunes();
 async function detailCommune(code){
   let d=await api('/api/communes/'+code);
   if(d.error){ $('#communeDetail').innerHTML='<p class="muted">Commune introuvable.</p>'; return; }
-  let c=d.commune;
+  let c=d.commune || {};
   let ch=d.chantier || {};
   $('#communeDetail').innerHTML=`
-    <h2>${c.nom_standard}</h2>
+    <h2>${c.nom_standard || ''}</h2>
     <p>${c.dep_code || '44'} • ${(c.population||0).toLocaleString('fr-FR')} habitants</p>
     <div class="kv">
       <b>Statut analyse</b><span>${c.statut_analyse||'à analyser'}</span>
@@ -76,6 +76,7 @@ async function detailCommune(code){
       <b>Prochaine action</b><span>${ch.prochaine_action||'à définir'}</span>
       <b>Pourquoi</b><span>${ch.raison_priorite||'à compléter'}</span>
     </div>
+    <button class="btn" onclick="editCommune('${code}')">Modifier</button>
     <h3>Lieux culturels</h3>
     ${d.lieux.length ? d.lieux.map(l=>`
       <div class="bar">
@@ -93,6 +94,31 @@ async function detailCommune(code){
     <button class="btn" onclick="saveNoteCommune('${code}')">Ajouter la note</button>
     ${(d.notes||[]).map(n=>`<div class="bar"><div>${n.contenu}</div></div>`).join('')}
   `;
+}
+async function editCommune(code){
+  let d=await api('/api/communes/'+code);
+  let c=d.commune || {};
+  $('#communeDetail').innerHTML=`
+    <h2>${c.nom_standard || ''}</h2>
+    <div class="kv">
+      <b>Population</b><span><input id="editPopulation" value="${c.population||''}"></span>
+      <b>Statut analyse</b><span><input id="editStatut" value="${c.statut_analyse||''}"></span>
+      <b>Priorité analyse</b><span><input id="editPriorite" value="${c.priorite_analyse||''}"></span>
+      <b>Dernière analyse</b><span><input id="editDerniereAnalyse" value="${c.derniere_analyse||''}"></span>
+    </div>
+    <button class="btn" onclick="saveCommune('${code}')">Enregistrer</button>
+    <button class="btn" onclick="detailCommune('${code}')">Annuler</button>
+  `;
+}
+async function saveCommune(code){
+  let payload={
+    population: $('#editPopulation').value,
+    statut_analyse: $('#editStatut').value,
+    priorite_analyse: $('#editPriorite').value,
+    derniere_analyse: $('#editDerniereAnalyse').value
+  };
+  await api('/api/communes/'+code+'/update',{method:'POST',body:JSON.stringify(payload)});
+  detailCommune(code);
 }
 async function saveNoteCommune(code){
   let txt=$('#noteCommune').value;

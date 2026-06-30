@@ -168,7 +168,7 @@ class Handler(BaseHTTPRequestHandler):
             order = 'nom_standard asc' if sort=='alpha' else 'population desc'
             rows=[dict(r) for r in con.execute('select code_insee,dep_code,nom_standard,population,statut_analyse,priorite_analyse,derniere_analyse from communes_analyse where '+where+' order by '+order+' limit 300',args)]
             con.close(); return self._json(rows)
-        if p.path.startswith('/api/communes/') and not p.path.endswith('/note'):
+        if p.path.startswith('/api/communes/') and not p.path.endswith('/note') and not p.path.endswith('/update'):
             code=p.path.split('/')[-1]
             commune=con.execute('select * from communes_analyse where code_insee=?',(code,)).fetchone()
             if not commune:
@@ -260,11 +260,33 @@ class Handler(BaseHTTPRequestHandler):
             con.close(); return self._json({'statuts':rows,'departements':deps})
         con.close(); return self._json({'error':'not found'},404)
     def do_POST(self):
-        p=urlparse(self.path); length=int(self.headers.get('Content-Length','0')); data=json.loads(self.rfile.read(length).decode('utf-8') or '{}')
+        p=urlparse(self.path); print('POST_PATH', p.path, flush=True)
+        if p.path.startswith('/api/communes/') and p.path.endswith('/update'):
+            code=p.path.split('/')[-2]
+            return self._json({'ok':True,'code':code})
+        length=int(self.headers.get('Content-Length','0')); data=json.loads(self.rfile.read(length).decode('utf-8') or '{}')
         con=db()
         if p.path.startswith('/api/lieux/') and p.path.endswith('/note'):
             id_lieu=p.path.split('/')[-2]; txt=(data.get('contenu') or '').strip()
             if txt: con.execute('insert into notes_lieux(id_lieu,contenu,type_note) values (?,?,?)',(id_lieu,txt,data.get('type_note','note'))); con.commit()
+            con.close(); return self._json({'ok':True})
+        if p.path.startswith('/api/communes/') and p.path.endswith('/update'):
+            code=p.path.split('/')[-2]
+            updates={}
+            if 'population' in data:
+                value=data.get('population')
+                updates['population']=None if value in ['',None] else int(value)
+            if 'statut_analyse' in data:
+                updates['statut_analyse']=data.get('statut_analyse')
+            if 'priorite_analyse' in data:
+                updates['priorite_analyse']=data.get('priorite_analyse')
+            if 'derniere_analyse' in data:
+                updates['derniere_analyse']=data.get('derniere_analyse')
+            if updates:
+                cols=', '.join(f'{k}=?' for k in updates.keys())
+                values=list(updates.values())+[code]
+                con.execute(f'update communes_analyse set {cols} where code_insee=?', values)
+                con.commit()
             con.close(); return self._json({'ok':True})
         if p.path.startswith('/api/communes/') and p.path.endswith('/note'):
             code=p.path.split('/')[-2]; txt=(data.get('contenu') or '').strip()
